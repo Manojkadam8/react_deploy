@@ -1,5 +1,5 @@
 <div align="center">
-    <h2>⚜️ V I T E &nbsp; D E P L O Y ⚜️</h2>
+    <h2>⚜️ D E P L O Y &nbsp; VITE REACT APP WITH ROUTER ⚜️</h2>
 </div>
 
 <div align="center">
@@ -115,60 +115,50 @@ src
     ├── Home.tsx
     └── Contact.tsx
 ```
-
-#### 03. Configuring the routing on _main.tsx_
-
-```js
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { Home } from "./pages/Home.tsx";
-import { Contact } from "./pages/Contact.tsx";
-
-const router = createBrowserRouter([
-  {
-    path: "/vite-react-router/",
-    element: <App />,
-    children: [
-      {
-        path: "/vite-react-router/",
-        element: <Home />,
-      },
-      {
-        path: "/vite-react-router/contact",
-        element: <Contact />,
-      },
-    ],
-  },
-]);
-
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
-);
-```
-
-#### 04. Configuring the routing on _App.tsx_
+#### 03. Create Layout.jsx File in main project folder
 
 ```js
-import { Link, Outlet } from "react-router-dom";
+import React from 'react'
+import { Outlet } from 'react-router-dom'
 
-export default function App() {
+const Layout = () => {
   return (
     <>
-      [FIXED_CONTENT]
-
-      <nav>
-        <Link to="/vite-react-router/">Home</Link>
-        {" | "}
-        <Link to="/vite-react-router/contact">Contact</Link>
-      </nav>
-
       <Outlet />
-
-      [FIXED_CONTENT]
     </>
-  );
+  )
 }
+
+export default Layout
+```
+#### 04. Configuring the routing on _main.tsx_
+
+```js
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App.jsx'
+import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
+import './index.css'
+import Layout from '../Layout.jsx'
+import Home from './pages/Home.jsx'
+import About from './pages/About.jsx'
+const router=createBrowserRouter(createRoutesFromElements(
+              
+  
+  <Route path='/react_deploy/' element={<Layout />} >
+ 
+ <Route path='/react_deploy/' element={<Home />} />
+ <Route path='/react_deploy/about' element={<About />} />
+
+  </Route>
+
+
+))
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+      <RouterProvider router={router} />
+  </React.StrictMode>,
+)
 ```
 
 #### 05. Specify the homepage in _package.json_
