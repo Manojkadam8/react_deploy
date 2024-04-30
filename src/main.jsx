@@ -9,10 +9,10 @@ import About from './pages/About.jsx'
 const router=createBrowserRouter(createRoutesFromElements(
               
   
-  <Route path='' element={<Layout />} >
+  <Route path='/react_deploy/' element={<Layout />} >
  
- <Route path='/' element={<Home />} />
- <Route path='/about' element={<About />} />
+ <Route path='/react_deploy/' element={<Home />} />
+ <Route path='/react_deploy/about' element={<About />} />
 
 
 
